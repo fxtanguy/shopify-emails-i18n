@@ -1,5 +1,5 @@
-{% capture email_title %}L'état de votre livraison a été mis à jour {% endcapture %}
-{% capture email_body %}Les articles suivants ont étés mis à jour avec de nouvelles informations de livraison.{% endcapture %}
+{% capture email_title %}Le statut de votre commande a été mis à jour. {% endcapture %}
+{% capture email_body %}Utilisez votre numéro de suivi pour suivre l'avancement de votre colis.{% endcapture %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +73,7 @@
     <td class="actions__cell">
       <table class="button main-action-cell">
         <tr>
-          <td class="button__cell"><a href="{{ order_status_url }}" class="button__text">Voir votre commande</a></td>
+          <td class="button__cell"><a href="{{ order_status_url }}" class="button__text">Voir ma commande</a></td>
         </tr>
       </table>
       {% if shop.url %}
@@ -120,7 +120,7 @@
         <table class="container">
           <tr>
             <td>
-              <h3>Articles à livrer</h3>
+              <h3>Votre panier:</h3>
             </td>
           </tr>
         </table>
@@ -152,7 +152,7 @@
             {% assign line_display = line.line_item.quantity  %}
           {% endif %}
 
-          <span class="order-list__item-title">{{ line_title }} × {{ line_display }}</span><br/>
+          <span class="order-list__item-title">{{ line_title }} × {{ line_display }}</span><br/>
 
           {% if line.line_item.variant.title != 'Default Title' %}
             <span class="order-list__item-variant">{{ line.line_item.variant.title }}</span>
@@ -179,7 +179,7 @@
         <table class="container">
           <tr>
             <td>
-              <p class="disclaimer__subtext">Si vous avez des questions, répondez à cet email ou contactez-nous à <a href="mailto:{{ shop.email }}">{{ shop.email }}</a></p>
+              <p class="disclaimer__subtext">Si vous avez la moindre question, envoyez un mail à <a href="mailto:{{ shop.email }}">{{ shop.email }}</a></p>
             </td>
           </tr>
         </table>
