@@ -1,21 +1,21 @@
 {% if fulfillment.item_count == item_count %} 
-  {% capture shipment_name %}Your order is{% endcapture %}
+  {% capture shipment_name %}Votre colis est{% endcapture %}
 {% elsif fulfillment.item_count > 1 %} 
   {% if fulfillment_status == 'fulfilled' %}
-    {% capture shipment_name %}The last items in your order are{% endcapture %}
+    {% capture shipment_name %}Les derniers articles de votre commande sont{% endcapture %}
   {% else %}
-    {% capture shipment_name %}Some items in your order are{% endcapture %}
+    {% capture shipment_name %}Certains articles de votre commande ont été{% endcapture %}
   {% endif %}
 {% else %} 
   {% if fulfillment_status == 'fulfilled' %}
-    {% capture shipment_name %}The last item in your order is{% endcapture %}
+    {% capture shipment_name %}Le dernier article de votre commande est{% endcapture %}
   {% else %}
-    {% capture shipment_name %}One item in your order is{% endcapture %}
+    {% capture shipment_name %}Un des articles de votre commande est{% endcapture %}
   {% endif %}
 {% endif %}
 
-{% capture email_title %}{{ shipment_name }} out for delivery{% endcapture %}
-{% capture email_body %}{{ shipment_name }} out for delivery. Track your shipment to see the delivery status.{% endcapture %}
+{% capture email_title %}{{ shipment_name }} en attente de livraison{% endcapture %}
+{% capture email_body %}{{ shipment_name }} en attente de livraison. Voyez son état d'avancement grâce à votre numéro de suivi.{% endcapture %}
 {% capture email_emphasis %}Estimated delivery date: <strong>{{fulfillment.estimated_delivery_at | date: "%B %d, %Y"}}</strong>{% endcapture %}
 
 <!DOCTYPE html>
@@ -58,7 +58,7 @@
 
                     <td class="order-number__cell">
                       <span class="order-number__text">
-                        Order {{ order_name }}
+                        Commande {{ order_name }}
                       </span>
                     </td>
                 </tr>
@@ -92,13 +92,13 @@
     <td class="actions__cell">
       <table class="button main-action-cell">
         <tr>
-          <td class="button__cell"><a href="{{ order_status_url }}" class="button__text">Track my shipment</a></td>
+          <td class="button__cell"><a href="{{ order_status_url }}" class="button__text">Voir ma commande</a></td>
         </tr>
       </table>
       {% if shop.url %}
     <table class="link secondary-action-cell">
       <tr>
-        <td class="link__cell"><a href="{{ shop.url }}" class="link__text"><span class='or'>or</span> Visit our store</a></td>
+        <td class="link__cell"><a href="{{ shop.url }}" class="link__text"><span class='or'>ou</span> Accéder à la boutique</a></td>
       </tr>
     </table>
 {% endif %}
@@ -139,7 +139,7 @@
         <table class="container">
           <tr>
             <td>
-              <h3>Items in this shipment</h3>
+              <h3>Votre panier:</h3>
             </td>
           </tr>
         </table>
@@ -171,7 +171,7 @@
             {% assign line_display = line.line_item.quantity  %}
           {% endif %}
 
-          <span class="order-list__item-title">{{ line_title }} × {{ line_display }}</span><br/>
+          <span class="order-list__item-title">{{ line_title }} × {{ line_display }}</span><br/>
 
           {% if line.line_item.variant.title != 'Default Title' %}
             <span class="order-list__item-variant">{{ line.line_item.variant.title }}</span>
@@ -198,7 +198,7 @@
         <table class="container">
           <tr>
             <td>
-              <p class="disclaimer__subtext">If you have any questions, reply to this email or contact us at <a href="mailto:{{ shop.email }}">{{ shop.email }}</a></p>
+              <p class="disclaimer__subtext">Si vous avez la moindre question, envoyez un mail à <a href="mailto:{{ shop.email }}">{{ shop.email }}</a></p>
             </td>
           </tr>
         </table>
